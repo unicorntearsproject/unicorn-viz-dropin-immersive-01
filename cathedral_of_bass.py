@@ -131,11 +131,22 @@ class CathedralOfBass(BaseEffect):
     AUTHOR = "unicorn-viz"
     TAGS = ["immersive", "bass", "shader", "audio", "raver", "cathedral"]
     PING_PONG_FRIENDS = [
+        # Immersive / cosmic neighbours
         'Wormhole',
         'Tunnel',
         'Black Hole Cathedral',
         'Cosmos',
+        # Psychedelics
+        'Plasma',
+        'Kaleidoscope',
         'Psychedelic',
+        # Audio-analysis visualizers
+        'Audio Spectrum',
+        'Audio Spectrogram',
+        'Audio Tracks',
+        'Audio Waveforms',
+        'Audio Centroid',
+        'Audio Sine',
     ]
 
     def _init(self) -> None:
