@@ -156,7 +156,7 @@ class Tunnel(BaseEffect):
 
     NAME   = "Tunnel"
     AUTHOR = "unicorn-viz"
-    TAGS = ["immersive", "classic", "futuristic"]
+    TAGS = ["immersive", "classic"]
     PING_PONG_FRIENDS = [
         'Plasma',
         'Wavey Gravy',
