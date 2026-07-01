@@ -251,7 +251,7 @@ class Wormhole(BaseEffect):
 
     NAME = 'Wormhole'
     AUTHOR = 'unicorn-viz drop-in'
-    TAGS = ['crystal', 'prism', 'lattice', 'audio', 'drop-in']
+    TAGS = ['immersive', 'crystal', 'prism', 'lattice']
     PING_PONG_FRIENDS = [
         'Unicorn Tears',
         'Kaleidoscope',

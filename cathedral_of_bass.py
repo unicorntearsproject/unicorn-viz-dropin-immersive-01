@@ -129,7 +129,7 @@ void main() {
 class CathedralOfBass(BaseEffect):
     NAME = "Cathedral of Bass"
     AUTHOR = "unicorn-viz"
-    TAGS = ["immersive", "bass", "shader", "audio", "raver", "cathedral"]
+    TAGS = ["immersive", "bass", "shader", "raver", "cathedral"]
     PING_PONG_FRIENDS = [
         # Immersive / cosmic neighbours
         'Wormhole',
