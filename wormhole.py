@@ -5,6 +5,8 @@ scene with prism facets, laser arcs, and electric haze.
 """
 from __future__ import annotations
 
+__version__ = '0.9.0'
+
 import moderngl
 
 from unicornviz.effects.base import BaseEffect, AudioData

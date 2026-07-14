@@ -1,5 +1,8 @@
 # immersive-01 — Unicorn Viz effect pack
 
+**Version 0.9.0**
+
+
 Enveloping, hypnotic depth visuals for
 [unicorn-viz](https://github.com/iDoMeteor/unicorn-viz).
 
@@ -13,3 +16,7 @@ Enveloping, hypnotic depth visuals for
   `speed`, `intensity`, `shake_gain`, `fog`, `shockwave`, `bloom`.
 
 Each effect subclasses `unicornviz.effects.base.BaseEffect` and is auto-discovered.
+
+## Changelog
+
+- **0.9.0** — initial versioned release.
