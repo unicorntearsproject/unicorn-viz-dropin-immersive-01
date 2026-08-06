@@ -1,6 +1,6 @@
 # immersive-01 — Unicorn Viz effect pack
 
-**Version 0.9.0**
+**Version 0.10.0**
 
 
 Enveloping, hypnotic depth visuals for
@@ -19,4 +19,5 @@ Each effect subclasses `unicornviz.effects.base.BaseEffect` and is auto-discover
 
 ## Changelog
 
+- **0.10.0** — Tunnel: the mid-band hue rotation is now a CPU-integrated phase (audit 2026-08-03 §8 Class A) — the palette rotates faster with the music instead of strobing to a random color every frame at large time phases.
 - **0.9.0** — initial versioned release.

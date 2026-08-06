@@ -35,6 +35,7 @@ uniform float iMid;
 uniform float iTreble;
 uniform float iBeat;
 uniform float iVignette;
+uniform float iHuePhase;  // CPU-integrated mid hue-rotation phase
 uniform vec2  iResolution;
 
 in  vec2 v_uv;
@@ -88,7 +89,10 @@ vec3 tunnelLayer(vec2 p, float t, float twist_rate, float fly_speed,
     float wall_b = wallPattern(ua - ca_amt * 0.12, depth_b - fly);
 
     // Prismatic colour: angle + depth + time + mid hue rotation
-    float hue = fract(ua * 0.5 + ud * 0.08 + t * (0.04 + iMid * 0.12) + hue_off);
+    // iHuePhase is CPU-integrated (see update()): t * (k + iMid) shifted
+    // hue by tens of cycles per frame of mid-band delta at large iTime —
+    // the palette strobed under music (audit 2026-08-03 §8 Class A).
+    float hue = fract(ua * 0.5 + ud * 0.08 + t * 0.04 + iHuePhase * 0.12 + hue_off);
     vec3 col = palette(hue);
 
     // Edge glow at tunnel mouth (near centre)
@@ -188,6 +192,8 @@ class Tunnel(BaseEffect):
         self._mid    = 0.0
         self._treble = 0.0
         self._beat   = 0.0
+        # CPU-integrated hue phase (nebula_drift pattern).
+        self._hue_phase = float(self.rng.uniform(0.0, 8.0))
 
     def update(self, dt: float, audio: AudioData) -> None:
         super().update(dt, audio)
@@ -197,6 +203,8 @@ class Tunnel(BaseEffect):
         if audio.beat > 0.5:
             self._beat = 1.0
         self._beat = max(0.0, self._beat - dt * 3.5)
+        self._hue_phase = (self._hue_phase
+                           + dt * float(self.parameters['speed']) * self._mid) % 1000.0
 
     def render(self) -> None:
         self._prog["iTime"].value       = self.time
@@ -207,6 +215,7 @@ class Tunnel(BaseEffect):
         self._prog["iMid"].value        = self._mid
         self._prog["iTreble"].value     = self._treble
         self._prog["iBeat"].value       = self._beat
+        self._prog["iHuePhase"].value   = self._hue_phase
         self._vao.render(moderngl.TRIANGLE_STRIP)
 
     def destroy(self) -> None:
