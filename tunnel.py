@@ -31,7 +31,6 @@ _FRAG = """
 uniform float iTime;
 uniform float iSpeed;
 uniform float iBass;
-uniform float iMid;
 uniform float iTreble;
 uniform float iBeat;
 uniform float iVignette;
@@ -89,7 +88,7 @@ vec3 tunnelLayer(vec2 p, float t, float twist_rate, float fly_speed,
     float wall_b = wallPattern(ua - ca_amt * 0.12, depth_b - fly);
 
     // Prismatic colour: angle + depth + time + mid hue rotation
-    // iHuePhase is CPU-integrated (see update()): t * (k + iMid) shifted
+    // iHuePhase is CPU-integrated (see update()): t * (k + mid) shifted
     // hue by tens of cycles per frame of mid-band delta at large iTime —
     // the palette strobed under music (audit 2026-08-03 §8 Class A).
     float hue = fract(ua * 0.5 + ud * 0.08 + t * 0.04 + iHuePhase * 0.12 + hue_off);
@@ -212,7 +211,6 @@ class Tunnel(BaseEffect):
         self._prog["iSpeed"].value      = float(self.parameters["speed"])
         self._prog["iVignette"].value   = float(self.parameters["vignette"])
         self._prog["iBass"].value       = self._bass
-        self._prog["iMid"].value        = self._mid
         self._prog["iTreble"].value     = self._treble
         self._prog["iBeat"].value       = self._beat
         self._prog["iHuePhase"].value   = self._hue_phase
